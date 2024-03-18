@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace ToDoListKeevo.Models
-{
-
+{   
+    //Enum para status da tarefa.
     [JsonConverter(typeof(StringEnumConverter))]
     public enum StatusTarefa
     {
@@ -22,6 +22,7 @@ namespace ToDoListKeevo.Models
         Concluida
     }
 
+    //Enum para tipo da tarefa.
     [JsonConverter(typeof(StringEnumConverter))]
     public enum TipoTarefa
     {
@@ -41,7 +42,8 @@ namespace ToDoListKeevo.Models
         Pessoal
     }
 
-
+    //Classe para modelar as tarefas
+    //Atributos da tarefa.
     public class Tarefa
     {
 

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using ToDoListKeevo.Models;
 
 namespace ToDoListKeevo.Data
-{
+{   
+    //Interface para o repositório
+    //O repositório é uma camada de abstração que faz a comunicação entre a aplicação e o banco de dados.
     public interface IRepository
     {
         void Add<T>(T entity) where T : class {}

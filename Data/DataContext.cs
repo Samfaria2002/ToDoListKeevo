@@ -9,13 +9,15 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 using ToDoListKeevo.Models;
 
 namespace ToDoListKeevo.Data
-{
+{   
+    //Classe para configurar o banco de dados
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) {}
 
         public DbSet<Tarefa> Tarefas { get; set; }
 
+        //Método para configurar a modelagem de dados
         protected override void OnModelCreating(ModelBuilder builder) {
 
             builder.Entity<Tarefa>()

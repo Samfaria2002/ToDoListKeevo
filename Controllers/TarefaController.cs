@@ -53,6 +53,7 @@ namespace ToDoListKeevo.Controllers
             }
         }
 
+        //Método para adicionar tarefas.
         [HttpPost]
         public IActionResult Post(Tarefa model) {
             try
@@ -73,6 +74,7 @@ namespace ToDoListKeevo.Controllers
         }
 
         [HttpPut("byId")]
+        //Método para atualizar um recurso.
         public IActionResult Put(int id, Tarefa model) {
             try
             {   
@@ -91,6 +93,7 @@ namespace ToDoListKeevo.Controllers
             return BadRequest();
         }
 
+        //O método para atualizar parcialmente um recurso.
         [HttpPatch("byId")]
         public IActionResult Patch(int id, Tarefa model) {
             try
@@ -111,6 +114,7 @@ namespace ToDoListKeevo.Controllers
             return BadRequest();
         }
 
+        //Método para deletar um recurso.
         [HttpDelete("byId")]
         public IActionResult Delete(int id) {
             try{

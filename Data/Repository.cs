@@ -7,9 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ToDoListKeevo.Data
 {
-    /*O repositório herda de IRepository, é a classe que se 
-    comunica com o banco de dados. Ele é responsável pelas ações de CRUD.
-    */
+    //O repositório é uma camada de abstração que faz a comunicação entre a aplicação e o banco de dados.
+    //Aqui estão os métodos que fazem a comunicação com o banco de dados.
     public class Repository : IRepository
     {
         private readonly DataContext _context;

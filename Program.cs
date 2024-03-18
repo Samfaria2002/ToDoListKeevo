@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ToDoListKeevo
 {
+    //Classe para configurar o host
+    //Aqui é onde a aplicação é iniciada.
     public class Program
     {
         public static void Main(string[] args)
