@@ -260,3 +260,4 @@ D:\projetos\ToDoListKeevo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Securi
 D:\projetos\ToDoListKeevo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\projetos\ToDoListKeevo\bin\Debug\net8.0\Npgsql.dll
 D:\projetos\ToDoListKeevo\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\projetos\ToDoListKeevo\obj\Debug\net8.0\ToDoListKeevo.sourcelink.json

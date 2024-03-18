@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoListKeevo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoListKeevo.Data
 {
@@ -42,14 +43,30 @@ namespace ToDoListKeevo.Data
             return query.ToArray();
         }
 
-        public Tarefa[] GetAllTarefasByStatus(TipoTarefa tipo) {
+        public Tarefa[] GetAllTarefasById(int id) {
             IQueryable<Tarefa> query = _context.Tarefas;
 
-            query = query.AsNoTracking().OrderBy(q => q.Id). where(q => q.Tipo == tipo);
+            query = query.AsNoTracking().OrderBy(q => q.Id == id);
 
             return query.ToArray();
         }
 
+        public Tarefa GetTarefaById(int id) {
+            IQueryable<Tarefa> query = _context.Tarefas;
+
+            query = query.AsNoTracking().OrderBy(q => q.Id)
+                        .Where(q => q.Id == id);
+
+            return query.FirstOrDefault();
+        }
+
+        public Tarefa[] GetAllTarefasByStatus(StatusTarefa status) {
+            IQueryable<Tarefa> query = _context.Tarefas;
+
+            query = query.AsNoTracking().OrderBy(q => q.Id).Where(q => q.Status == status);
+
+            return query.ToArray();
+        }
 
     }
 }

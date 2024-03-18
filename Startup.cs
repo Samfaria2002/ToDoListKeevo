@@ -39,6 +39,11 @@ namespace ToDoListKeevo
             //Método para configurar o AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            /*Método para configurar o repositório.
+            O AddScoped é um método que cria um novo escopo para cada requisição.
+            */
+            services.AddScoped<IRepository, Repository>();
+
             services.AddControllers();
         }
 
