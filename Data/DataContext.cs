@@ -21,6 +21,10 @@ namespace ToDoListKeevo.Data
         protected override void OnModelCreating(ModelBuilder builder) {
 
             builder.Entity<Tarefa>()
+                .Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<Tarefa>()
                 .Property(t => t.Prazo)
                 .HasColumnType("date");
 

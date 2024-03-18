@@ -12,7 +12,7 @@ using ToDoListKeevo.Data;
 namespace ToDoListKeevo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240318191457_init")]
+    [Migration("20240318231831_init")]
     partial class init
     {
         /// <inheritdoc />
