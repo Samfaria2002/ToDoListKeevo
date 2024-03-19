@@ -7434,11 +7434,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo.csproj",
+      "projectUniqueName": "D:\\projetos\\ToDoAppKeevo\\ToDoListKeevo\\ToDoListKeevo.csproj",
       "projectName": "ToDoListKeevo",
-      "projectPath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo.csproj",
+      "projectPath": "D:\\projetos\\ToDoAppKeevo\\ToDoListKeevo\\ToDoListKeevo.csproj",
       "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-      "outputPath": "D:\\projetos\\ToDoListKeevo\\obj\\",
+      "outputPath": "D:\\projetos\\ToDoAppKeevo\\ToDoListKeevo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
