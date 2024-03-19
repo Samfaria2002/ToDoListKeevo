@@ -17,13 +17,11 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(this.baseURL);
   }
 
+  /*
   getById(id: number): Observable<Tarefa> {
     return this.http.get<Tarefa>(`${this.baseURL}/${id}`);
   }
-
-  getByDisciplinaId(id: number): Observable<Tarefa[]> {
-    return this.http.get<Tarefa[]>(`${this.baseURL}/ByDisciplina/${id}`);
-  }
+  */
 
   post(tarefa: Tarefa) {
     return this.http.post(this.baseURL, tarefa);
