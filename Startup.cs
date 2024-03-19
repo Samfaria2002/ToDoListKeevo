@@ -12,11 +12,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
-using ToDoListKeevo.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Npgsql;
 using Newtonsoft.Json;
 using AutoMapper;
+using ToDoListKeevo.Data;
 
 
 namespace ToDoListKeevo
@@ -50,13 +52,21 @@ namespace ToDoListKeevo
             /*Método para configurar o repositório.
             O AddScoped é um método que cria um novo escopo para cada requisição.*/
             services.AddScoped<IRepository, Repository>();
+
+            services.AddControllers();
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()){
                 app.UseDeveloperExceptionPage();
+            }
+
+            if (env.IsDevelopment()){
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

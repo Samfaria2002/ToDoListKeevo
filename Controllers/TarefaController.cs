@@ -18,12 +18,10 @@ namespace ToDoListKeevo.Controllers
     public class TarefaController : ControllerBase
     {
         private readonly IRepository _repo;
-        private readonly IMapper _mapper;
 
-        public TarefaController(IRepository repo, IMapper mapper)
+        public TarefaController(IRepository repo)
         {
             _repo = repo;
-            _mapper = mapper;
         }
 
         //Método para retornar todas as tarefas.
@@ -32,7 +30,19 @@ namespace ToDoListKeevo.Controllers
             try
             {
                 var tarefas = _repo.GetAllTarefas();
-                return Ok(_mapper.Map<IEnumerable<TarefaDto>>(tarefas));
+                var tarefasRetorno = new List<TarefaDto>();
+
+                foreach (var tarefa in tarefas)
+                {
+                    tarefasRetorno.Add(new TarefaDto {
+                        Id = tarefa.Id,
+                        Nome = tarefa.Nome,
+                        Status = tarefa.Status,
+                        Tipo = tarefa.Tipo,
+                        Prazo = tarefa.Prazo
+                    });
+                }
+                return Ok(tarefasRetorno);
             }
             catch (System.Exception)
             {
@@ -46,29 +56,24 @@ namespace ToDoListKeevo.Controllers
             try
             {
                 var tarefas = _repo.GetAllTarefasByStatus(status);
-                if(tarefas == null) return NotFound();
-
-                var tarefasDto = _mapper.Map<TarefaDto>(tarefas);
-                return Ok(tarefasDto);
+                return Ok(tarefas);
             }
             catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
             }
-            return BadRequest();
         }
 
         //Método para adicionar tarefas.
         [HttpPost]
-        public IActionResult Post(TarefaDto model) {
+        public IActionResult Post(Tarefa model) {
             try
             {
-                var tarefa = _mapper.Map<Tarefa>(model);
-                _repo.Add(tarefa);
+                _repo.Add(model);
 
                 if(_repo.SaveChanges())
                 {
-                    return Created($"/api/tarefa/{tarefa.Id}", _mapper.Map<TarefaDto>(tarefa));
+                    return Created($"/api/tarefa/{model.Id}", model);
                 }
             }
             catch (System.Exception)
@@ -81,17 +86,14 @@ namespace ToDoListKeevo.Controllers
 
         [HttpPut("byId")]
         //Método para atualizar um recurso.
-        public IActionResult Put(int id, TarefaDto model) {
+        public IActionResult Put(int id, Tarefa model) {
             try
             {   
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
-
-                _mapper.Map(model, tarefa);
-
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
+                    return Created($"/api/tarefa/{model.Id}", model);
                 }
             }
             catch (System.Exception)
@@ -104,21 +106,19 @@ namespace ToDoListKeevo.Controllers
 
         //O método para atualizar parcialmente um recurso.
         [HttpPatch("byId")]
-        public IActionResult Patch(int id, TarefaDto model) {
+        public IActionResult Patch(int id, Tarefa model) {
             try
-            {   
+            {
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
-
-                _mapper.Map(model, tarefa);
-
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
+                    return Created($"/api/tarefa/{model.Id}", model);
                 }
             }
             catch (System.Exception)
             {
+                
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao atualizar dados.");
             }
 
