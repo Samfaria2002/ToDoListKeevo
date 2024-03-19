@@ -94,10 +94,12 @@ namespace ToDoListKeevo_api.Models
         [EnumDataType(typeof(TipoTarefa))]
         public TipoTarefa Tipo { get; set; }
 
+        [JsonConverter(typeof(DataConveter))]
         public DateTime Prazo { get; set; }
 
         [EnumDataType(typeof(PrioridadeTarefa))]
         public PrioridadeTarefa Prioridade { get; set; }
+
 
     }
 }

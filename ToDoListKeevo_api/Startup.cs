@@ -43,11 +43,17 @@ namespace ToDoListKeevo_api
             //Método para configurar o AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //Método para configurar o CORS
+            //Método que configura o serializador JSON, para ignorar loops de referência.
             services.AddControllers().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = 
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+            });
+
+
             /*Método para configurar o repositório.
             O AddScoped é um método que cria um novo escopo para cada requisição.*/
             services.AddScoped<IRepository, Repository>();

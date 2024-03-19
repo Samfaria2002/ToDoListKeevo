@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ToDoListKeevo_api.Helpers
 {
+
+    //Essa classe é responsável por fazer a paginação dos resultados.
     public class PageList<T> : List<T>
     {
         public int CurrentPage { get; set; }

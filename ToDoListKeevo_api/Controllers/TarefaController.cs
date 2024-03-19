@@ -34,22 +34,6 @@ namespace ToDoListKeevo_api.Controllers
             {
                 var tarefas = await _repo.GetAllTarefasAsync(pageParams);
                 var tarefasRetorno = _mapper.Map<IEnumerable<TarefaDto>>(tarefas);
-                /*
-                var tarefasRetorno = new List<TarefaDto>();
-
-                foreach (var tarefa in tarefas)
-                {
-                    tarefasRetorno.Add(new TarefaDto {
-                        Id = tarefa.Id,
-                        Nome = tarefa.Nome,
-                        Status = tarefa.Status,
-                        Tipo = tarefa.Tipo,
-                        Prazo = tarefa.Prazo,
-                        Prioridade = tarefa.Prioridade
-                    });
-                }
-                */
-
                 Response.AddPagination(tarefas.CurrentPage, tarefas.PageSize, tarefas.TotalCount, tarefas.TotalPages);
                 return Ok(tarefasRetorno);
             }

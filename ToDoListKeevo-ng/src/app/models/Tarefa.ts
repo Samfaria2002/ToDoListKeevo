@@ -3,6 +3,6 @@ export class Tarefa {
     nome: string;
     status: string;
     tipo: string;
-    prazo: string;
+    prazo: Date;
     prioridade: string;
 }

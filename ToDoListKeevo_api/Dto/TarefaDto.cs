@@ -10,6 +10,10 @@ using Newtonsoft.Json.Converters;
 
 namespace ToDoListKeevo_api.Dto
 {
+
+    /*DTO (Data Transfer Object) é um padrão de projeto que tem 
+    como objetivo transferir dados entre subsistemas de um software. */
+    
     public class TarefaDto
     {
         public int Id { get; set; }
@@ -24,8 +28,7 @@ namespace ToDoListKeevo_api.Dto
 
         public PrioridadeTarefa Prioridade { get; set; }
 
-        //Conversão ímplicita de Tarefa para TarefaDto.
-        //Usada antes do AutoMapper.
+        //Conversão ímplicita de Tarefa para TarefaDto. Usada antes do AutoMapper.
         /*
         public static implicit operator TarefaDto(Tarefa tarefa) {
         return new TarefaDto {

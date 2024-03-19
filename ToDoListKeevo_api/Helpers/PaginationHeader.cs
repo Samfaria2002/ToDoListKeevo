@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ToDoListKeevo_api.Helpers
 {
+
+    //Essa classe define os parâmetros de paginação.
+    //Eles são usados para definir o número da página e a quantidade de itens por página.
     public class PaginationHeader
     {
         public int CurrentPage { get; set; }

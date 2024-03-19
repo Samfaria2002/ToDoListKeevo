@@ -91,19 +91,19 @@ export class TarefasComponent implements OnInit, OnDestroy {
   carregarTarefas(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
     const id = idParam ? +idParam : null;
-
+  
     this.tarefaService.getAll()
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((tarefas: Tarefa[]) => {
         this.tarefas = tarefas;
-
+  
         if (id !== null && id > 0) {
           const selectedTarefa = this.tarefas.find(tarefa => tarefa.id === id);
           if (selectedTarefa) {
             this.tarefaSelect(selectedTarefa);
           }
         }
-
+  
         this.toastr.success('Tarefas foram carregadas com sucesso!');
       }, (error: any) => {
         this.toastr.error('Tarefas não carregadas!');
