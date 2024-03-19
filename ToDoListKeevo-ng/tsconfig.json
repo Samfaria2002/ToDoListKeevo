@@ -12,6 +12,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "sourceMap": true,
+
+    //Essa opção é para que o TypeScript não reclame de propriedades que não foram inicializadas
+    "strictPropertyInitialization": false,
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",

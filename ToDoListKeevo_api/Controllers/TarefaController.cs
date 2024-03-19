@@ -39,7 +39,8 @@ namespace ToDoListKeevo_api.Controllers
                         Nome = tarefa.Nome,
                         Status = tarefa.Status,
                         Tipo = tarefa.Tipo,
-                        Prazo = tarefa.Prazo
+                        Prazo = tarefa.Prazo,
+                        Prioridade = tarefa.Prioridade
                     });
                 }
                 return Ok(tarefasRetorno);

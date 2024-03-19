@@ -1,0 +1,75 @@
+<div class="row">
+
+    <div class="col-sm-6" *ngIf="tarefaSelecionado">
+      <div class="row">
+        <div class="mr-auto">
+          <app-titulo [titulo]="'Cód. Tarefa: ' + tarefaSelecionado.id"></app-titulo>
+        </div>
+        <div class="mt-1">
+          <button class="btn btn-sm btn-outline-danger" (click)="voltar()">
+            Fechar
+          </button>
+        </div>
+      </div>
+  
+      <form [formGroup]="tarefaForm">
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nome</label>
+          <input type="text" formControlName="nome" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Status</label>
+          <input type="text" formControlName="status"  class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Tipo</label>
+          <input type="text" formControlName="tipo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Prazo</label>
+            <input type="date" formControlName="prazo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Prioridade</label>
+            <input type="text" formControlName="prioridade" class="form-control">
+        </div>
+        <div class="form-group">
+          <hr>
+          <button class="btn btn-success" (click)="saveTarefa()" [disabled]="!tarefaForm.valid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  
+    <div [ngClass]="{'col-sm-6': tarefaSelecionado, 'col-sm-12': !tarefaSelecionado}">
+      <app-titulo [titulo]="titulo"></app-titulo>
+  
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Visualizar</th>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Status</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Prazo</th>
+            <th scope="col">Prioridade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarefa of tarefas">
+            <td><button (click)="tarefaSelect(tarefa)"
+              class="text-dark btn btn-sm btn-outline-warning">Detalhe</button></td>
+            <td scope="row">{{tarefa.id}}</td>
+            <td>{{tarefa.nome}}</td>
+            <td>{{tarefa.status}}</td>
+            <td>{{tarefa.tipo}}</td>
+            <td>{{tarefa.prazo}}</td>
+            <td>{{tarefa.prioridade}}</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
