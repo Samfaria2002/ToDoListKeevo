@@ -11,7 +11,20 @@ namespace ToDoListKeevo_api.Helpers
     public class ApiProfile : Profile
     {
         public ApiProfile(){
-            CreateMap<TarefaDto, Tarefa>();
+            CreateMap<Tarefa, TarefaDto>();
+            CreateMap<Tarefa, TarefaRegistrarDto>().ReverseMap();
+            CreateMap<Tarefa, TarefaPatchDto>().ReverseMap();
+
+            CreateMap<PageList<Tarefa>, IEnumerable<TarefaDto>>()
+                .ConvertUsing(pageList => pageList.Select(t => new TarefaDto
+                {
+                    Id = t.Id,
+                    Nome = t.Nome,
+                    Status = t.Status,
+                    Tipo = t.Tipo,
+                    Prazo = t.Prazo,
+                    Prioridade = t.Prioridade
+                }));
         }
     }
 }

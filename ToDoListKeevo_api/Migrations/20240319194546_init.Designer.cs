@@ -9,10 +9,10 @@ using ToDoListKeevo_api.Data;
 
 #nullable disable
 
-namespace ToDoListKeevo_api.Migrations
+namespace ToDoListKeevo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240319023654_init")]
+    [Migration("20240319194546_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace ToDoListKeevo_api.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ToDoListKeevo.Models.Tarefa", b =>
+            modelBuilder.Entity("ToDoListKeevo_api.Models.Tarefa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

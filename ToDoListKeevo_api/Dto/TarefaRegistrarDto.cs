@@ -10,8 +10,9 @@ using Newtonsoft.Json.Converters;
 
 namespace ToDoListKeevo_api.Dto
 {
-    public class TarefaDto
+    public class TarefaRegistrarDto
     {
+        
         public int Id { get; set; }
 
         public string Nome { get; set; }
@@ -23,20 +24,5 @@ namespace ToDoListKeevo_api.Dto
         public DateTime Prazo { get; set; }
 
         public PrioridadeTarefa Prioridade { get; set; }
-
-        //Conversão ímplicita de Tarefa para TarefaDto.
-        //Usada antes do AutoMapper.
-        /*
-        public static implicit operator TarefaDto(Tarefa tarefa) {
-        return new TarefaDto {
-            Id = tarefa.Id,
-            Nome = tarefa.Nome,
-            Status = tarefa.Status,
-            Tipo = tarefa.Tipo,
-            Prazo = tarefa.Prazo,
-            Prioridade = tarefa.Prioridade
-        };
-        */
     }
-    
 }

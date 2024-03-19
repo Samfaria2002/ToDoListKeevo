@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoListKeevo_api.Models;
+using ToDoListKeevo_api.Helpers;
 
 namespace ToDoListKeevo_api.Data
 {   
@@ -19,12 +20,12 @@ namespace ToDoListKeevo_api.Data
         bool SaveChanges();
         
         
-        Tarefa[] GetAllTarefas();
+        Task<PageList<Tarefa>> GetAllTarefasAsync(PageParams pageParam);
 
         Tarefa[] GetAllTarefasById(int id);
 
         Tarefa GetTarefaById(int id);
 
-        Tarefa[] GetAllTarefasByStatus(StatusTarefa Status);
+        Task<Tarefa[]> GetAllTarefasByStatusAsync(StatusTarefa Status);
     }
 }

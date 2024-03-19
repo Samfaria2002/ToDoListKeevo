@@ -10,6 +10,7 @@ using AutoMapper;
 using ToDoListKeevo_api.Models;
 using ToDoListKeevo_api.Data;
 using ToDoListKeevo_api.Dto;
+using ToDoListKeevo_api.Helpers;
 
 namespace ToDoListKeevo_api.Controllers
 {   
@@ -17,19 +18,23 @@ namespace ToDoListKeevo_api.Controllers
     [Route("api/[controller]")]
     public class TarefaController : ControllerBase
     {
-        private readonly IRepository _repo;
+        public readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public TarefaController(IRepository repo)
+        public TarefaController(IRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
         //Método para retornar todas as tarefas.
         [HttpGet]
-        public IActionResult Get() {
+        public async Task<IActionResult> Get([FromQuery] PageParams pageParams) {
             try
             {
-                var tarefas = _repo.GetAllTarefas();
+                var tarefas = await _repo.GetAllTarefasAsync(pageParams);
+                var tarefasRetorno = _mapper.Map<IEnumerable<TarefaDto>>(tarefas);
+                /*
                 var tarefasRetorno = new List<TarefaDto>();
 
                 foreach (var tarefa in tarefas)
@@ -43,20 +48,26 @@ namespace ToDoListKeevo_api.Controllers
                         Prioridade = tarefa.Prioridade
                     });
                 }
+                */
+
+                Response.AddPagination(tarefas.CurrentPage, tarefas.PageSize, tarefas.TotalCount, tarefas.TotalPages);
                 return Ok(tarefasRetorno);
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
             }
         }
 
-        //Método para retornar tarefas por status.
+        // Método para retornar tarefas por status.
         [HttpGet("byStatus")]
-        public IActionResult GetByType(StatusTarefa status) {
+        public async Task<IActionResult> GetByStatus(StatusTarefa status)
+        {
             try
             {
-                var tarefas = _repo.GetAllTarefasByStatus(status);
+                var tarefas = await _repo.GetAllTarefasByStatusAsync(status);
+                if (tarefas == null) return NotFound();
                 return Ok(tarefas);
             }
             catch (System.Exception)
@@ -107,7 +118,7 @@ namespace ToDoListKeevo_api.Controllers
 
         //O método para atualizar parcialmente um recurso.
         [HttpPatch("byId")]
-        public IActionResult Patch(int id, Tarefa model) {
+        public IActionResult Patch(int id, TarefaPatchDto model) {
             try
             {
                 var tarefa = _repo.GetTarefaById(id);

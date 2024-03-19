@@ -32,7 +32,6 @@ namespace ToDoListKeevo_api
 
         public IConfiguration Configuration { get; }
 
-        //Método para configurar os serviços da aplicação
         public void ConfigureServices(IServiceCollection services)
         {   
             //Método para configurar o banco de dados PostgreSQL
@@ -53,9 +52,14 @@ namespace ToDoListKeevo_api
             O AddScoped é um método que cria um novo escopo para cada requisição.*/
             services.AddScoped<IRepository, Repository>();
 
+            //Método para configurar a documentação da API via Swagger
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+            //Método para configurar o CORS
+            //CORS é um mecanismo que permite que recursos restritos em uma página da web sejam solicitados por outro domínio fora do domínio de origem.
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -63,7 +67,7 @@ namespace ToDoListKeevo_api
             if (env.IsDevelopment()){
                 app.UseDeveloperExceptionPage();
             }
-
+            
             if (env.IsDevelopment()){
                 app.UseSwagger();
                 app.UseSwaggerUI();
@@ -72,6 +76,10 @@ namespace ToDoListKeevo_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //Método para configurar o CORS
+            //Esse método permite que a API seja acessada por qualquer origem, método e cabeçalho.
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

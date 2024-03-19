@@ -40,6 +40,13 @@ export class TarefasComponent implements OnInit, OnDestroy {
     this.carregarTarefas();
   }
 
+  showSpinner(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+  }
+
   criarForm(): void {
     this.tarefaForm = this.fb.group({
       id: [0],
@@ -53,7 +60,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
 
   saveTarefa(): void {
     if (this.tarefaForm.valid) {
-      this.spinner.show();
+      this.showSpinner();
 
       if (this.modeSave === 'post') {
         this.tarefa = { ...this.tarefaForm.value };
@@ -74,6 +81,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
           }, (error: any) => {
             this.toastr.error(`Erro: Tarefa não pode ser salva!`);
             console.error(error);
+            this.spinner.hide();
           }, () => this.spinner.hide()
         );
 
@@ -83,7 +91,6 @@ export class TarefasComponent implements OnInit, OnDestroy {
   carregarTarefas(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
     const id = idParam ? +idParam : null;
-
 
     this.tarefaService.getAll()
       .pipe(takeUntil(this.unsubscriber))
@@ -101,6 +108,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
       }, (error: any) => {
         this.toastr.error('Tarefas não carregadas!');
         console.error(error);
+        this.spinner.hide();
       }, () => this.spinner.hide()
     );
   }

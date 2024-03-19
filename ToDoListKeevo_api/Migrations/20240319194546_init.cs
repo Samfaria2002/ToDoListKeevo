@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ToDoListKeevo_api.Migrations
+namespace ToDoListKeevo.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration

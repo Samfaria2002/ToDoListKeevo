@@ -31,6 +31,10 @@ export class TarefaService {
     return this.http.put(`${this.baseURL}/${tarefa.id}`, tarefa);
   }
 
+  patch(tarefa: Tarefa) {
+    return this.http.patch(`${this.baseURL}/${tarefa.id}`, tarefa);
+  }
+
   delete(id: number) {
     return this.http.delete(`${this.baseURL}/${id}`);
   }

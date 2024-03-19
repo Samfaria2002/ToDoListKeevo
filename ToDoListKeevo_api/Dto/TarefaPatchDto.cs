@@ -10,18 +10,23 @@ using Newtonsoft.Json.Converters;
 
 namespace ToDoListKeevo_api.Dto
 {
-    public class TarefaDto
+    public class TarefaPatchDto
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string Nome { get; set; }
 
+        [EnumDataType(typeof(StatusTarefa))]
         public StatusTarefa Status { get; set; }
 
+        [EnumDataType(typeof(TipoTarefa))]
         public TipoTarefa Tipo { get; set; }
 
         public DateTime Prazo { get; set; }
 
+        [EnumDataType(typeof(PrioridadeTarefa))]
         public PrioridadeTarefa Prioridade { get; set; }
 
         //Conversão ímplicita de Tarefa para TarefaDto.
