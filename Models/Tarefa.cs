@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoListKeevo.Models
 {   
@@ -43,18 +44,33 @@ namespace ToDoListKeevo.Models
         Pessoal
     }
 
+    //Enum para prioridade da tarefa.
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PrioridadeTarefa
+    {
+        [Display(Name = "Baixa")]
+        Baixa,
+
+        [Display(Name = "Média")]
+        Media,
+
+        [Display(Name = "Alta")]
+        Alta
+    }
+
     //Classe para modelar as tarefas
     //Atributos da tarefa.
     public class Tarefa
     {
 
-        public Tarefa(int id, string nome, DateTime prazo, StatusTarefa status, TipoTarefa tipo) 
+        public Tarefa(int id, string nome, StatusTarefa status, TipoTarefa tipo, DateTime prazo, PrioridadeTarefa prioridade) 
         {
             Id = id;
             Nome = nome;
-            Prazo = prazo;
             Status = status;
             Tipo = tipo;
+            Prazo = prazo;
+            Prioridade = prioridade;
 
             if(Prazo != null) {
                 Prazo.ToString("dd/MM/yyyy");
@@ -65,18 +81,23 @@ namespace ToDoListKeevo.Models
                 Status = StatusTarefa.Concluida;
             }
         }
-
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string Nome { get; set; }
-        public DateTime Prazo { get; set; }
 
         [EnumDataType(typeof(StatusTarefa))]
         public StatusTarefa Status { get; set; }
 
         [EnumDataType(typeof(TipoTarefa))]
         public TipoTarefa Tipo { get; set; }
+
+        public DateTime Prazo { get; set; }
+
+        [EnumDataType(typeof(PrioridadeTarefa))]
+        public PrioridadeTarefa Prioridade { get; set; }
 
     }
 }

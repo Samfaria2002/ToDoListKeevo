@@ -15,7 +15,8 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 using ToDoListKeevo.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Npgsql;
-//using AutoMapper;
+using Newtonsoft.Json;
+using AutoMapper;
 
 
 namespace ToDoListKeevo
@@ -38,14 +39,17 @@ namespace ToDoListKeevo
                 context => context.UseNpgsql(Configuration.GetConnectionString("PostgreConnection"))
             );
 
-            //Método para configurar o AutoMapper (tive problemas ao implementar)
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //Método para configurar o AutoMapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            //Método para configurar o CORS
+            services.AddControllers().AddNewtonsoftJson(
+                options => options.SerializerSettings.ReferenceLoopHandling = 
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            
             /*Método para configurar o repositório.
             O AddScoped é um método que cria um novo escopo para cada requisição.*/
             services.AddScoped<IRepository, Repository>();
-            
-            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

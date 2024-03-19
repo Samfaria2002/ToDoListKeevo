@@ -12,7 +12,7 @@ using ToDoListKeevo.Data;
 namespace ToDoListKeevo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240318231831_init")]
+    [Migration("20240319011325_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -39,6 +39,10 @@ namespace ToDoListKeevo.Migrations
 
                     b.Property<DateTime>("Prazo")
                         .HasColumnType("date");
+
+                    b.Property<string>("Prioridade")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Status")
                         .IsRequired()

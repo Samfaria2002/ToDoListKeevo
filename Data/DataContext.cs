@@ -41,6 +41,13 @@ namespace ToDoListKeevo.Data
                     v => v.ToString(),
                     v => (TipoTarefa)Enum.Parse(typeof(TipoTarefa), v))
                 .HasColumnType("text");
+
+            builder.Entity<Tarefa>()
+                .Property(e => e.Prioridade)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (PrioridadeTarefa)Enum.Parse(typeof(PrioridadeTarefa), v))
+                .HasColumnType("text");
         }  
 
     }

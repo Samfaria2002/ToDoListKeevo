@@ -37,6 +37,10 @@ namespace ToDoListKeevo.Migrations
                     b.Property<DateTime>("Prazo")
                         .HasColumnType("date");
 
+                    b.Property<string>("Prioridade")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text");

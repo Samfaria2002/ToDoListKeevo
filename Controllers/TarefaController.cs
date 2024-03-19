@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using ToDoListKeevo.Models;
 using ToDoListKeevo.Data;
+using ToDoListKeevo.Dto;
 
 namespace ToDoListKeevo.Controllers
 {   
@@ -16,13 +17,13 @@ namespace ToDoListKeevo.Controllers
     [Route("api/[controller]")]
     public class TarefaController : ControllerBase
     {
-        private readonly DataContext _context;
         private readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public TarefaController(DataContext context, IRepository repo)
+        public TarefaController(IRepository repo, IMapper mapper)
         {
-            _context = context;
             _repo = repo;
+            _mapper = mapper;
         }
 
         //Método para retornar todas as tarefas.
@@ -31,7 +32,7 @@ namespace ToDoListKeevo.Controllers
             try
             {
                 var tarefas = _repo.GetAllTarefas();
-                return Ok(tarefas);
+                return Ok(_mapper.Map<IEnumerable<TarefaDto>>(tarefas));
             }
             catch (System.Exception)
             {
@@ -45,24 +46,29 @@ namespace ToDoListKeevo.Controllers
             try
             {
                 var tarefas = _repo.GetAllTarefasByStatus(status);
-                return Ok(tarefas);
+                if(tarefas == null) return NotFound();
+
+                var tarefasDto = _mapper.Map<TarefaDto>(tarefas);
+                return Ok(tarefasDto);
             }
             catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
             }
+            return BadRequest();
         }
 
         //Método para adicionar tarefas.
         [HttpPost]
-        public IActionResult Post(Tarefa model) {
+        public IActionResult Post(TarefaDto model) {
             try
             {
-                _repo.Add(model);
+                var tarefa = _mapper.Map<Tarefa>(model);
+                _repo.Add(tarefa);
 
                 if(_repo.SaveChanges())
                 {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{tarefa.Id}", _mapper.Map<TarefaDto>(tarefa));
                 }
             }
             catch (System.Exception)
@@ -75,14 +81,17 @@ namespace ToDoListKeevo.Controllers
 
         [HttpPut("byId")]
         //Método para atualizar um recurso.
-        public IActionResult Put(int id, Tarefa model) {
+        public IActionResult Put(int id, TarefaDto model) {
             try
             {   
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
+
+                _mapper.Map(model, tarefa);
+
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
                 }
             }
             catch (System.Exception)
@@ -95,19 +104,21 @@ namespace ToDoListKeevo.Controllers
 
         //O método para atualizar parcialmente um recurso.
         [HttpPatch("byId")]
-        public IActionResult Patch(int id, Tarefa model) {
+        public IActionResult Patch(int id, TarefaDto model) {
             try
-            {
+            {   
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
+
+                _mapper.Map(model, tarefa);
+
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
                 }
             }
             catch (System.Exception)
             {
-                
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao atualizar dados.");
             }
 

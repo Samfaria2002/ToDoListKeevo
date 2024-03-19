@@ -19,9 +19,10 @@ namespace ToDoListKeevo.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nome = table.Column<string>(type: "text", nullable: false),
-                    Prazo = table.Column<DateTime>(type: "date", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
-                    Tipo = table.Column<string>(type: "text", nullable: false)
+                    Tipo = table.Column<string>(type: "text", nullable: false),
+                    Prazo = table.Column<DateTime>(type: "date", nullable: false),
+                    Prioridade = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
