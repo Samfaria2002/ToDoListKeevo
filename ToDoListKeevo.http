@@ -1,6 +1,0 @@
-@ToDoListKeevo_HostAddress = http://localhost:5299
-
-GET {{ToDoListKeevo_HostAddress}}/api/
-Accept: application/json
-
-###
