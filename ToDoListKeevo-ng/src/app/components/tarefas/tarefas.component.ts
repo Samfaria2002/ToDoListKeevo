@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 import { Tarefa } from '../../models/Tarefa'; // Replace 'path/to/tarefa.model' with the actual path to the Tarefa model file
 import { TarefaService } from '../../services/tarefa.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tarefas',
@@ -24,7 +24,12 @@ export class TarefasComponent implements OnInit, OnDestroy {
   public tarefa: Tarefa;
   public msnDeleteTarefa: string;
   public modeSave = 'post';
+  public dadosCarregados: boolean = false;
+  statusList: string[] = ['Pendente', 'Concluida', 'EmAndamento'];
+  tarefasFiltradas: Tarefa[];
+  selectedStatus: string = '';
   private unsubscriber = new Subject();
+  private modalService: NgbModal
 
   constructor(
     private tarefaService: TarefaService,
@@ -38,6 +43,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.carregarTarefas();
+    this.criarForm();
   }
 
   showSpinner(): void {
@@ -45,6 +51,10 @@ export class TarefasComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.spinner.hide();
     }, 2000);
+  }
+
+  openModal(content: TemplateRef<any>): void {
+    this.modalService.open(content, { centered: true });
   }
 
   criarForm(): void {
@@ -95,18 +105,22 @@ export class TarefasComponent implements OnInit, OnDestroy {
     this.tarefaService.getAll()
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((tarefas: Tarefa[]) => {
-        this.tarefas = tarefas;
-
-        if (id && +id > 0) {
-          this.tarefaSelect(id);
-        }
-
-        this.toastr.success('Tarefas foram carregadas com sucesso!');
-      }, (error: any) => {
-        this.toastr.error('Tarefas não carregadas!');
-        console.error(error);
-        this.spinner.hide();
-      }, () => this.spinner.hide()
+          this.tarefas = tarefas;
+          this.tarefasFiltradas = [...this.tarefas];
+  
+          if (id && +id > 0) {
+            this.tarefaSelect(id);
+          }
+  
+          this.dadosCarregados = true;
+          this.toastr.success('Tarefas foram carregadas com sucesso.', 'Sucesso', { timeOut: 3000 });
+        },
+        (error: any) => {
+          this.toastr.error('Tarefas não carregadas!', 'Erro');
+          console.error(error);
+          this.spinner.hide();
+        },
+        () => this.spinner.hide()
       );
   }
 
@@ -124,6 +138,51 @@ export class TarefasComponent implements OnInit, OnDestroy {
       },
       () => this.spinner.hide()
     );
+  }
+
+  cadastrarTarefa(): void {
+    if (this.tarefaForm.valid) {
+      this.tarefaService.post(this.tarefaForm.value).subscribe(
+        () => {
+          this.toastr.success('Tarefa cadastrada com sucesso!');
+          this.tarefaForm.reset();
+        },
+        error => {
+          console.error(error);
+          this.toastr.error('Erro ao cadastrar tarefa. Por favor, tente novamente mais tarde.');
+        }
+      );
+    } else {
+      this.toastr.error('Por favor, preencha todos os campos corretamente.');
+    }
+  }
+
+  deleteTarefa(id: number): void {
+    if (confirm('Tem certeza de que deseja excluir esta tarefa?')) {
+      this.showSpinner();
+      this.tarefaService.delete(id)
+        .pipe(takeUntil(this.unsubscriber))
+        .subscribe(
+          () => {
+            this.toastr.success('Tarefa excluída com sucesso!');
+            window.location.reload();
+          },
+          (error: any) => {
+            console.error(error);
+            this.spinner.hide();
+            window.location.reload();
+          },
+          () => this.spinner.hide()
+        );
+    }
+  }
+  
+  filterTarefas(): void {
+    if (this.selectedStatus) {
+      this.tarefasFiltradas = this.tarefas.filter(tarefa => tarefa.status === this.selectedStatus);
+    } else {
+      this.tarefasFiltradas = [...this.tarefas];
+    }
   }
 
   voltar(): void {

@@ -8,7 +8,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TarefasComponent } from './components/tarefas/tarefas.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
 import { NavComponent } from './components/shared/nav/nav.component';
 import { TituloComponent } from './components/shared/titulo/titulo.component';
 import { NgbAlertModule, NgbModalModule, NgbModule, NgbPaginationModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,13 +18,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
-    PerfilComponent,
     NavComponent,
     TarefasComponent,
     TituloComponent,
   ],
   imports: [
     BrowserModule,
+    NgbModalModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -46,7 +45,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     NgbModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })
