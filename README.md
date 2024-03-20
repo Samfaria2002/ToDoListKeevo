@@ -14,6 +14,8 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 - [.Net v8.0.203](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
   - [EntityFramework Core v8.0.3 (abaixo mostro como baixar)](https://learn.microsoft.com/pt-br/ef/core/)
 - [PostgreSQL 16.2](https://www.postgresql.org/)
+- [DockerDesktop](https://www.docker.com/products/docker-desktop/)
+  - [Docker-Compose](https://github.com/docker/compose)
 
 ### Como rodar em outra máquina?
 
