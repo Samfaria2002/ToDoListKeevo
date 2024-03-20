@@ -10,7 +10,7 @@ import { Tarefa } from '../models/Tarefa';
 })
 export class TarefaService {
 
-  baseURL = `${environment.mainUrlAPI}tarefa`;
+  baseURL = `${environment.mainUrlAPI}`;
 
   constructor(private http: HttpClient) { }
 
@@ -18,11 +18,9 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(this.baseURL)
   }
 
-  /*
   getById(id: number): Observable<Tarefa> {
     return this.http.get<Tarefa>(`${this.baseURL}/${id}`);
   }
-  */
 
   post(tarefa: Tarefa) {
     return this.http.post(this.baseURL, tarefa);

@@ -57,7 +57,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let tarefa of tarefas">
-            <td><button (click)="tarefaSelect(tarefa)"
+            <td><button (click)="tarefaSelect(tarefa.id)"
               class="text-dark btn btn-sm btn-outline-warning">Detalhe</button></td>
             <td scope="row">{{tarefa.id}}</td>
             <td>{{tarefa.nome}}</td>

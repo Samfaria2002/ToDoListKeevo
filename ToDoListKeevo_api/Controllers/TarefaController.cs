@@ -44,6 +44,21 @@ namespace ToDoListKeevo_api.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id) {
+            try
+            {
+                var tarefa = _repo.GetTarefaById(id);
+                if(tarefa == null) return NotFound();
+                return Ok(tarefa);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
+            }
+        }
+
         // Método para retornar tarefas por status.
         [HttpGet("byStatus")]
         public async Task<IActionResult> GetByStatus(StatusTarefa status)
@@ -62,67 +77,76 @@ namespace ToDoListKeevo_api.Controllers
 
         //Método para adicionar tarefas.
         [HttpPost]
-        public IActionResult Post(Tarefa model) {
+        public IActionResult Post(TarefaRegistrarDto model) {
             try
             {
-                _repo.Add(model);
+                var tarefa = _mapper.Map<Tarefa>(model);
+                _repo.Add(tarefa);
 
-                if(_repo.SaveChanges())
+                if (_repo.SaveChanges())
                 {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
                 }
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao adicionar dados.");
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
             }
 
             return BadRequest("Aluno não criado");
         }
 
-        [HttpPut("byId")]
+        [HttpPut("{id}")]
         //Método para atualizar um recurso.
-        public IActionResult Put(int id, Tarefa model) {
+        public IActionResult Put(int id, TarefaRegistrarDto model) {
             try
             {   
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
+
+                _mapper.Map(model, tarefa);
+
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaDto>(tarefa));
                 }
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao atualizar dados.");
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
             }
 
             return BadRequest();
         }
 
         //O método para atualizar parcialmente um recurso.
-        [HttpPatch("byId")]
+        [HttpPatch("{id}")]
         public IActionResult Patch(int id, TarefaPatchDto model) {
             try
             {
                 var tarefa = _repo.GetTarefaById(id);
                 if(tarefa == null) return NotFound();
+
+                _mapper.Map(model, tarefa);
+                
                 _repo.Update(tarefa);
                 if(_repo.SaveChanges()) {
-                    return Created($"/api/tarefa/{model.Id}", model);
+                    return Created($"/api/tarefa/{model.Id}", _mapper.Map<TarefaPatchDto>(tarefa));
                 }
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao atualizar dados.");
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
             }
 
             return BadRequest();
         }
 
         //Método para deletar um recurso.
-        [HttpDelete("byId")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) {
             try{
                 var tarefa = _repo.GetTarefaById(id);
@@ -132,8 +156,10 @@ namespace ToDoListKeevo_api.Controllers
                     return Ok("Aluno com id: " + tarefa.Id + " deletado com sucesso.");
                 }
             }
-            catch (System.Exception) {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou ao deletar dados.");
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha: {ex.Message}");
             }
 
             return BadRequest();

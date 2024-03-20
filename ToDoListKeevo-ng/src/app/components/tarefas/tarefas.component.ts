@@ -89,34 +89,41 @@ export class TarefasComponent implements OnInit, OnDestroy {
   }
 
   carregarTarefas(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    const id = idParam ? +idParam : null;
+    const tarefaId = this.route.snapshot.paramMap.get('id');
+    const id = tarefaId ? +tarefaId : null;
   
     this.tarefaService.getAll()
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((tarefas: Tarefa[]) => {
         this.tarefas = tarefas;
-  
-        if (id !== null && id > 0) {
-          const selectedTarefa = this.tarefas.find(tarefa => tarefa.id === id);
-          if (selectedTarefa) {
-            this.tarefaSelect(selectedTarefa);
-          }
+
+        if (id && +id > 0) {
+          this.tarefaSelect(id);
         }
-  
+
         this.toastr.success('Tarefas foram carregadas com sucesso!');
       }, (error: any) => {
         this.toastr.error('Tarefas não carregadas!');
         console.error(error);
         this.spinner.hide();
       }, () => this.spinner.hide()
-    );
+      );
   }
 
-  tarefaSelect(tarefa: Tarefa): void {
-    this.modeSave = 'put';
-    this.tarefaSelecionado = tarefa;
-    this.tarefaForm.patchValue(tarefa);
+  tarefaSelect(tarefaId: number): void {
+    this.modeSave = 'patch';
+    this.tarefaService.getById(tarefaId).subscribe(
+      (tarefaReturn) => {
+        this.tarefaSelecionado = tarefaReturn;
+        this.tarefaForm.patchValue(this.tarefaSelecionado);
+      },
+      (error) => {
+        this.toastr.error('Tarefas não carregadas!');
+        console.error(error);
+        this.spinner.hide();
+      },
+      () => this.spinner.hide()
+    );
   }
 
   voltar(): void {
