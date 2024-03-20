@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+// Importação de módulos e componentes do Angular e de terceiros
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -8,6 +8,8 @@ import { Tarefa } from '../models/Tarefa';
 @Injectable({
   providedIn: 'root'
 })
+
+//Classe responsável por retornar as requisicoes HTTP para o backend
 export class TarefaService {
 
   baseURL = `${environment.mainUrlAPI}`;

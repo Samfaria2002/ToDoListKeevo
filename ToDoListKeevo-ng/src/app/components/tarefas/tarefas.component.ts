@@ -48,11 +48,13 @@ export class TarefasComponent implements OnInit, OnDestroy {
     this.criarForm();
   }
 
+  //Método para inicializar o componente
   ngOnInit(): void {
     this.carregarTarefas();
     this.criarForm();
   }
 
+  // Método para carregar as tarefas na tabela
   carregarTarefas(): void {
     const tarefaId = this.route.snapshot.paramMap.get('id');
     const id = tarefaId ? +tarefaId : null;
@@ -79,6 +81,8 @@ export class TarefasComponent implements OnInit, OnDestroy {
       );
   }
 
+  // Método para selecionar uma tarefa
+  // Se o id da tarefa for passado, ele busca a tarefa pelo id e preenche o formulário para edição
   tarefaSelect(tarefaId?: number): void {
     this.modeSave = 'patch';
   
@@ -101,10 +105,10 @@ export class TarefasComponent implements OnInit, OnDestroy {
     }
   }
 
+  //Método responável por cadastrar uma tarefa
   cadastrarTarefa(): void {
     console.log('Dados a serem enviados:', this.tarefaForm.value);
     if (this.tarefaForm.valid) {
-      // Criando um objeto com os campos necessários para a requisição
       const { nome, status, tipo, prazo, prioridade } = this.tarefaForm.value;
       const novaTarefa: Tarefa = { id: 0, nome, status, tipo, prazo, prioridade };
   
@@ -123,6 +127,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     }
   }
 
+  //Método responsável por deletar uma tarefa
   deleteTarefa(id: number): void {
     if (confirm('Tem certeza de que deseja excluir esta tarefa?')) {
       this.showSpinner();
@@ -143,6 +148,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     }
   }
   
+  //Método responsável por salvar uma tarefa
   saveTarefa(): void {
     if (this.tarefaForm.valid) {
       this.showSpinner();
@@ -171,6 +177,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     }
   }
 
+  //Método também responsável por salvar uma tarefa, porém, passando diretamente os valores do formulário
   salvarTarefa(): void {
     const tarefa: Tarefa = {
       id: this.tarefaForm.value.id,
@@ -183,14 +190,16 @@ export class TarefasComponent implements OnInit, OnDestroy {
     this.tarefaService.post(tarefa);
   }
   
+  //Método responsável por filtrar as tarefas por status
   filterTarefas(): void {
     if (this.selectedStatus) {
       this.tarefasFiltradas = this.tarefas.filter(tarefa => tarefa.status === this.selectedStatus);
     } else {
-      this.tarefasFiltradas = [...this.tarefas]; // Se nenhum status for selecionado, exiba todas as tarefas
+      this.tarefasFiltradas = [...this.tarefas];
     }
   }
 
+  //Método responsável por abrir o formulário de cadastro de tarefas
   newTarefaForm(): void {
     this.modeSave = 'post';
     this.tarefaSelecionado = null;
@@ -198,6 +207,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     this.mostrarFormulario = true;
   }
 
+  //Método responsável por iniciar o spinner
   showSpinner(): void {
     this.spinner.show();
     setTimeout(() => {
@@ -205,6 +215,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     }, 2000);
   }
 
+  //Método responsável por inicializar o formulário
   criarForm(): void {
     this.tarefaForm = this.fb.group({
       id: [0],
@@ -216,11 +227,13 @@ export class TarefasComponent implements OnInit, OnDestroy {
     });
   }
 
+  //Método responsável por fechar o formulário
   voltar(): void {
     this.tarefaSelecionado = null;
     this.mostrarFormulario = false;
   }
 
+  //Método responsável por destruir o componente
   ngOnDestroy(): void {
     this.unsubscriber.next({});
     this.unsubscriber.complete();
