@@ -28,6 +28,11 @@ namespace ToDoListKeevo_api.Controllers
         }
 
         //Método para retornar todas as tarefas.
+
+        /// <summary>
+        /// Método responsável para retornar todas as tarefas.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] PageParams pageParams) {
             try
@@ -44,6 +49,10 @@ namespace ToDoListKeevo_api.Controllers
             }
         }
 
+        /// <summary>
+        /// Método responsável para retornar todas as tarefas pelo Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id) {
             try
@@ -60,6 +69,10 @@ namespace ToDoListKeevo_api.Controllers
         }
 
         // Método para retornar tarefas por status.
+        /// <summary>
+        /// Método responsável para retornar todas as tarefas pelo status.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("byStatus")]
         public async Task<IActionResult> GetByStatus(StatusTarefa status)
         {
@@ -76,6 +89,10 @@ namespace ToDoListKeevo_api.Controllers
         }
 
         //Método para adicionar tarefas.
+        /// <summary>
+        /// Método responsável para adicionar tarefas.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(TarefaRegistrarDto model) {
             try
@@ -97,6 +114,10 @@ namespace ToDoListKeevo_api.Controllers
             return BadRequest("Aluno não criado");
         }
 
+        /// <summary>
+        /// Método responsável para atualizar um recurso.
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id}")]
         //Método para atualizar um recurso.
         public IActionResult Put(int id, TarefaRegistrarDto model) {
@@ -121,7 +142,10 @@ namespace ToDoListKeevo_api.Controllers
             return BadRequest();
         }
 
-        //O método para atualizar parcialmente um recurso.
+        /// <summary>
+        /// Método responsável para atualizar um recurso parcialmente.
+        /// </summary>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, TarefaPatchDto model) {
             try
@@ -145,7 +169,10 @@ namespace ToDoListKeevo_api.Controllers
             return BadRequest();
         }
 
-        //Método para deletar um recurso.
+        /// <summary>
+        /// Método responsável para deletar um recurso.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id) {
             try{
