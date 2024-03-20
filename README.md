@@ -1,7 +1,7 @@
 # Keevo - Desafio Full Stack Developer
 
 Olá! Me chamo Samuel Faria Garcia e este é o repositório contendo meu programa, de acordo com o desafio proposto para a última estapa do processo seletivo de estágio da Keevo https://github.com/keevosoftwares/desafio-fullstack .
-Não possuia vasta experiência com estas tecnologias, então foi um super desafio aprendê-las e desenvolver um programa em 13 dias. Adorei todo o processo de estudo e desenvolvimento; expandi ainda mais meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack e pude aprimorar ainda mais meus conhecimentos na a área.
+Não possuia vasta experiência com estas tecnologias, então foi um super desafio aprendê-las e desenvolver um programa em 13 dias. Adorei todo o processo de estudo e desenvolvimento; expandi meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack. Pude aprimorar ainda mais meus conhecimentos na área.
 
 # Configuração
 
@@ -27,7 +27,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 ### Configuração do PostgreSQL
 
 Nessa parte, será necessário fazer uma última configuração. Durante esse tempo de desenvolvimento, tive meu primeiro contato com Postgre, então para entregar um projeto satisfatório, realizei configurações simples.
-Infelizmente não consegui usar o Docker pois estava muito problemático de configurar na minha máquina e sempre estava dando erro, então optei por usar o Postgre localmente pelo software do pgAdmin4.
+Infelizmente não consegui usar o Docker devido a obstáculos técnicos no meu ambiente local, então optei por usar o Postgre localmente, utilizando a inferface do pgAdmin4 para me auxiliar.
 
 - Crie uma nova instância de server ou utilize algum já existente;
   - Caso deseja criar outro server, se atente apenas para o host, port, username e password definidos na criação do server e nome da database.
