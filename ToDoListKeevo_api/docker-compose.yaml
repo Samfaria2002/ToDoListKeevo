@@ -1,0 +1,14 @@
+version: "2.24.6"
+
+services:
+  
+  postgre-compose:
+    container_name: postgres-container
+    image: postgres
+    environment:
+      hostname: "localhost"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "pgsamfaria25"
+      POSTGRES_DB: "postgres"
+    ports:
+      - "5433:5432"

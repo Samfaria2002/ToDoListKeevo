@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cDm68wp3BgRh/5GzgcFNzZSNANCCJWuIgh7LZcU4jTHfjgdISgh6aayoj7pMxeHyV9An5KQBCojqUGsfdJhP3Q==",
+  "dgSpecHash": "DyIPKPbkidwlELIVO2cLK2J7Xoio8Oqo8LnQ6l+SdGhAj0XCATdaaaVKmUv8xcFziMU7OpwO2apnZ64ISV3GRw==",
   "success": true,
-  "projectFilePath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
+  "projectFilePath": "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pichau\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
