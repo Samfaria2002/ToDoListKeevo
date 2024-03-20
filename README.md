@@ -1,7 +1,7 @@
 # Keevo - Desafio Full Stack Developer
 
 Olá! Me chamo Samuel Faria Garcia e este é o repositório contendo meu programa, de acordo com o desafio proposto para a última estapa do processo seletivo de estágio da Keevo https://github.com/keevosoftwares/desafio-fullstack .
-Não possuia vasta experiência com estas tecnologias, então foi um super desafio aprendê-las e desenvolver um programa em 13 dias. Gostei muito mesmo de todo o processo de estudo e desenvolvimento; expandi ainda mais meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack e pude aprimorar ainda mais meus conhecimentos na a área.
+Não possuia vasta experiência com estas tecnologias, então foi um super desafio aprendê-las e desenvolver um programa em 13 dias. Adorei todo o processo de estudo e desenvolvimento; expandi ainda mais meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack e pude aprimorar ainda mais meus conhecimentos na a área.
 
 # Configuração
 
