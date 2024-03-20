@@ -4,7 +4,7 @@ Olá! Me chamo Samuel Faria Garcia e este é o repositório contendo meu program
 Nunca tinha mexido antes com .NET nem com Postgre, então foi um grande desafio aprender e desenvolver um programa usando essas tecnologias
 em 13 dias. Gostei muito mesmo de todo o processo de estudo e desenvolvimento; expandi ainda mais meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack e pude aprimorar ainda mais meus conhecimentos na a área.
 
-# Configuração do projeto
+# Configuração
 
 ## Requisitos para rodar o projeto
 
