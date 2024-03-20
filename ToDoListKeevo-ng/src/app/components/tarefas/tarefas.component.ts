@@ -162,17 +162,19 @@ export class TarefasComponent implements OnInit, OnDestroy {
       }
       
 
-      this.tarefaService.post(this.tarefa)
+      (this.tarefaService as any)[this.modeSave](this.tarefa)
       .pipe(takeUntil(this.unsubscriber))
       .subscribe(
         () => {
           this.carregarTarefas();
-          this.toastr.success('Tarefa salva com sucesso!');
-        }, (error: any) => {
-          this.toastr.error(`Erro: Tarefa não pode ser salva!`);
+          this.toastr.success('Aluno salvo com sucesso!');
+        },
+        (error: any) => {
+          this.toastr.error(`Erro: Aluno não pode ser salvo!`);
           console.error(error);
           this.spinner.hide();
-        }, () => this.spinner.hide()
+        },
+        () => this.spinner.hide()
       );
     }
   }

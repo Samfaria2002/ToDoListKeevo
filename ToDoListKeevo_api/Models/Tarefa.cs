@@ -72,10 +72,8 @@ namespace ToDoListKeevo_api.Models
             Prazo = prazo;
             Prioridade = prioridade;
 
-            if(Prazo != null) {
-                Prazo.ToString("dd/MM/yyyy");
-            }
-
+            /*OBS: Se o prazo da tarefa for menor que a data atual, 
+            a tarefa é automaticamente marcada como Concluida.*/
             if(prazo != null && prazo < DateTime.Now)
             {
                 Status = StatusTarefa.Concluida;
