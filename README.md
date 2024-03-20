@@ -43,3 +43,15 @@ Infelizmente não consegui usar o Docker pois estava muito problemático de conf
 Como dito antes, infelizmente tive problemas ao configurar o docker e docker-compose, então tive que executar os programas via terminal.
 
 - Abra dois terminais e digite o comando `dotnet watch run` (ou apenas `dotnet run`) e o comando `ng serve` no outro terminal.
+
+Caso queira acessar a documentação das rotas HTTP via Swagger, acesse `http://localhost:{porta}/swagger/index.html`
+Talvez seja necessário a troca das portas, pois variam de serviço. Caso seja o cenário, ao rodar a api pelo Dotnet run, observe o terminal 
+pois ele irá avisar sobre uma porta disponível, pois eu a configurei dinâmicamente, ou seja, o script irá procurar por uma porta disponível 
+e hopspedará a api .net. Guarde a porta da api pois ela deve ser adicionada ao arquivo de configuração do Angular.
+
+Vá para o diretório `ToDoListKeevo-ng/src/environment/environment.prod.ts` e troque, na url da api, a porta para a que foi gerada dinâmicamente: `mainUrlAPI: 'http://localhost:{porta}/api/tarefa'`.
+
+Pronto, agora ambos os sistemas backend e frontend devem estar devidamente configurados e prontos para serem usados.
+
+
+# Estrutura do projeto
