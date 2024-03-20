@@ -25,11 +25,12 @@ export class TarefasComponent implements OnInit, OnDestroy {
   public msnDeleteTarefa: string;
   public modeSave = 'post';
   public dadosCarregados: boolean = false;
-  statusList: string[] = ['Pendente', 'Concluida', 'EmAndamento'];
-  tarefasFiltradas: Tarefa[];
-  selectedStatus: string = '';
   private unsubscriber = new Subject();
-  private modalService: NgbModal
+  private modalService: NgbModal;
+  filtroStatus: string = '';
+  tarefasFiltradas: Tarefa[];
+  statusList: string[] = ['Pendente', 'Concluida', 'EmAndamento'];
+  selectedStatus: string = '';
 
   constructor(
     private tarefaService: TarefaService,
@@ -181,7 +182,7 @@ export class TarefasComponent implements OnInit, OnDestroy {
     if (this.selectedStatus) {
       this.tarefasFiltradas = this.tarefas.filter(tarefa => tarefa.status === this.selectedStatus);
     } else {
-      this.tarefasFiltradas = [...this.tarefas];
+      this.tarefasFiltradas = [...this.tarefas]; // Se nenhum status for selecionado, exiba todas as tarefas
     }
   }
 

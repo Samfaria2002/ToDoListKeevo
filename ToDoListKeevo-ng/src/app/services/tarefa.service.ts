@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environment/environment.prod';
 import { Tarefa } from '../models/Tarefa';
-import { PaginatedResult } from '../models/Pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +17,6 @@ export class TarefaService {
   getAll(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(this.baseURL)
   }
-
-
 
   getById(id: number): Observable<Tarefa> {
     return this.http.get<Tarefa>(`${this.baseURL}/${id}`);
