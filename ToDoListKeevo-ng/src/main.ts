@@ -1,3 +1,5 @@
+//Essa é a classe principal do projeto, onde é feito o bootstrap do módulo principal da aplicação.
+
 /// <reference types="@angular/localize" />
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

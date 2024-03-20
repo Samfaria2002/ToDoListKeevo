@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ToDoListKeevo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+facdd7c7b4d5e5fa11f2b889c9fa22882ac4b206")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a8051d03b84c4d77a276b5e548cb3ff6fc430f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ToDoListKeevo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ToDoListKeevo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,7 +17,7 @@ namespace ToDoListKeevo_api.Data
 
         public DbSet<Tarefa> Tarefas { get; set; }
 
-        //Método para configurar a modelagem de dados
+        //Método para a modelagem de dados
         protected override void OnModelCreating(ModelBuilder builder) {
 
             builder.Entity<Tarefa>()
