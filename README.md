@@ -28,11 +28,9 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 - Volte um diretório e entre na pasta ToDoListKeevo-ng e dê o seguinte comando `npm install`;
   - Isso irá baixar todos os pacotes e dependências necessários para rodar o app Angular.
 
-### Configuração do PostgreSQL
+### Configuração do Docker e PostgreSQL
 
-Nessa parte, será necessário fazer uma última configuração. Durante esse tempo de desenvolvimento, tive meu primeiro contato com Postgre, então para entregar um projeto satisfatório, realizei configurações simples.
-Infelizmente não consegui usar o Docker devido a obstáculos técnicos no meu ambiente local, então optei por usar o Postgre localmente, utilizando a inferface do pgAdmin4 para me auxiliar.
-
+Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando docker-compose up, o Docker irá baixar a imagem do Postgres e criar um container onde será hospedado o banco de dados. Para definir corretamente o banco, abra o arquivo `ToDoListKeevo_api/docker-compose.yaml` e preencha os campos `hostname`, `POSTGRES_USER` e `POSTGRES_PASSWORD`;
 - Crie uma nova instância de server ou utilize algum já existente;
   - Caso deseja criar outro server, se atente apenas para o host, port, username e password definidos na criação do server e nome da database.
 - Entre no diretório ToDoListKeevo_api > appsettings.json e appsettings.Development.json;
