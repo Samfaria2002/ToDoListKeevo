@@ -17,7 +17,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 - [DockerDesktop](https://www.docker.com/products/docker-desktop/)
   - [Docker-Compose](https://github.com/docker/compose)
 
-### Como rodar em outra máquina?
+### Como rodar em outro computador?
 
 - Primeiro clone o projeto `https://github.com/Samfaria2002/ToDoListKeevo.git`;
 - Abra o projeto em uma ide de preferência e inicie um terminal;
@@ -44,16 +44,12 @@ Seguindo, volte para o terninal e entre no diretório `ToDoListKeevo_api`, em se
 
 ### Inicialização do programa
 
-Como dito antes, infelizmente tive problemas ao configurar o docker e docker-compose, então tive que executar os programas via terminal.
-
 - Abra dois terminais e digite o comando `dotnet watch run` (ou apenas `dotnet run`) e o comando `ng serve` no outro terminal.
 
-Caso queira acessar a documentação das rotas HTTP via Swagger, acesse `http://localhost:{porta}/swagger/index.html`
-Talvez seja necessário a troca das portas, pois variam de serviço. Caso seja o cenário, ao rodar a api pelo Dotnet run, observe o terminal 
-pois ele irá avisar sobre uma porta disponível, pois eu a configurei dinâmicamente, ou seja, o script irá procurar por uma porta disponível 
-e hopspedará a api .net. Guarde a porta da api pois ela deve ser adicionada ao arquivo de configuração do Angular.
+Caso queira acessar a documentação das rotas HTTP via Swagger, acesse `http://localhost:{porta_da_api}/swagger/index.html`.
 
-Vá para o diretório `ToDoListKeevo-ng/src/environment/environment.prod.ts` e troque, na url da api, a porta para a que foi gerada dinâmicamente: `mainUrlAPI: 'http://localhost:{porta}/api/tarefa'`.
+Será necessário trocar a porta da Api nos arquivos do Angular, pois variam de serviço. Ao rodar o script dotnet pelo `Dotnet watch run`, observe o terminal 
+pois ele retornará uma porta disponível que foi configurada dinâmicamente e hopspedará a api dotnet. Vá para o diretório `ToDoListKeevo-ng/src/environment/environment.prod.ts` e troque, na url da api, a porta pela a que foi gerada dinâmicamente, retornada no terminal: `mainUrlAPI: 'http://localhost:{porta_da_api}/api/tarefa'`.
 
 Pronto, agora ambos os sistemas backend e frontend devem estar devidamente configurados e prontos para serem usados.
 
@@ -81,3 +77,4 @@ Pronto, agora ambos os sistemas backend e frontend devem estar devidamente confi
 - DTO (Data Transfer Object):  É um padrão de design usado para transferir dados entre subsistemas de um aplicativo. As vantagens dele incluem a redução do tráfego de rede, encapsulamento e desacoplamento dos dados e flexibilidade de desenvolvimetno;
 - Repository Pattern: É um padrão de arquitetura de software. A interface IRepository permite uma flexibilidade de implementação de novos métodos, sem alterar o resto do código. Já a classe Repository encapsula a lógica dos dados. Ela facilida a manutenção e escalonamento do código, porque a lógica dos dados está centrada em um local apenas;
 - SwaggerUI: É uma ferramenta que permite visualizar e interagir com APIs Restful, fornecendo toda uma interface gráfica e interativa; facilita a visualização da documentação e possibilita o envio de solicitações HTTP;
+- Docker-Compose: O Docker Compose permite definir toda a configuração em um único arquivo YAML, incluindo versões de imagens, variáveis de ambiente, volumes, redes, etc. Isso simplifica bastante a configuração e a portabilidade em diferentes computadores.
