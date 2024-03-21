@@ -30,9 +30,11 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 
 ### Configuração do Docker e PostgreSQL
 
-Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando docker-compose up, o Docker irá baixar a imagem do Postgres e criar um container onde será hospedado o banco de dados. Para definir corretamente o banco, abra o arquivo `ToDoListKeevo_api/docker-compose.yaml` e preencha os campos `hostname`, `POSTGRES_USER` e `POSTGRES_PASSWORD`;
-- Crie uma nova instância de server ou utilize algum já existente;
-  - Caso deseja criar outro server, se atente apenas para o host, port, username e password definidos na criação do server e nome da database.
+Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando docker-compose up, o Docker irá baixar a imagem do Postgres e criar um container onde será hospedado o banco de dados. Para definir corretamente o banco, abra o arquivo `ToDoListKeevo_api/docker-compose.yaml` e preencha os campos de acordo com a configuração do seu Docker Desktop: 
+- `hostname`;
+- `POSTGRES_USER`;
+- `POSTGRES_PASSWORD`.
+
 - Entre no diretório ToDoListKeevo_api > appsettings.json e appsettings.Development.json;
 - Em ambos os arquivos JSON, você encontrará uma chave nomeada `PostgreConnection`, altere os campos em ambos JSON:
   - Host, port, database, username e password;
