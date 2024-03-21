@@ -23,6 +23,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 - Abra o projeto em uma ide de preferência e inicie um terminal;
 - Entre no diretório ToDoListKeevo_api e dê o seguinte comando `dotnet restore`;
   - Isso irá atualizar todos os pacotes do NuGet em sua máquina.
+- Dê o comando `docker-compose up`;
 - Volte um diretório e entre na pasta ToDoListKeevo-ng e dê o seguinte comando `npm install`;
   - Isso irá baixar todos os pacotes e dependências necessários para rodar o app Angular.
 
