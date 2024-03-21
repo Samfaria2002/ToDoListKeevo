@@ -39,7 +39,8 @@ Entre no diretório `ToDoListKeevo_api/appsettings.json` e `appsettings.Developm
 Para realizar a conexão do banco de dados PostgreSQL com o container do Docker, recomendo a utilização de alguma interface para administração de banco de dados. Caso sua ide seja o Visual Studio Code, recomendo a extensão Database Client `https://database-client.com/#/home`.
 Agora, é necessário ligar o container para podermos dar prosseguimento a configuração do banco. Abra o terminal e insira o comando `docker container start postgres-container`.
 
-Para configurar, estabeleça uma nova conexão passando nos campos os mesmos parâmetros que definimos no `docker-compose.yaml` e na chave `PostgreConnection`. Volte para o terninal e entre no diretório `ToDoListKeevo_api`. Apague a pasta Migrations e insira os seguintes comandos no terminal respectivamente: `dotnet ef migrations add init` e `dotnet ef database update`. Esses comandos irão recriar o modelo do banco de dados e atualizar-los na nova conexão.
+Para configurar, estabeleça uma nova conexão passando nos campos os mesmos parâmetros que definimos no `docker-compose.yaml` e na chave `PostgreConnection`, adicione também a porta que o container foi hospedada. Para este projeto, hospeedei o container nas portas 5433:5432, caso tenha problemas com a configuração de portas, vá até o `docker-compose.yaml` e altere o campo `ports` para a porta que você deseja ou alguma outra disponível, lembre-se de apagar o container e criar um novo através do `docker-compose up`. Caso a interface de conexão do banco mostre vários tipos de bancos de dados, selecione o PostgreSQL. 
+Seguindo, volte para o terninal e entre no diretório `ToDoListKeevo_api`, em seguida insira o comando `dotnet ef database update`. Esse comando irá recriar o modelo do banco de dados e atualizar-lo na nova conexão.
 
 ### Inicialização do programa
 
@@ -77,6 +78,6 @@ Pronto, agora ambos os sistemas backend e frontend devem estar devidamente confi
 
 # Melhorias implementadas
 
-- DTO (Data Transfer Object):  É um padrão de design usado para transferir dados entre subsistemas de um aplicativo. As vantagens dele incluem a redução do tráfego de rede, encapsulamento e desacoplamento dos dados e flexibilidade de desenvolvimetno.
-- Repository Pattern: É um padrão de arquitetura de software. A interface IRepository permite uma flexibilidade de implementação de novos métodos, sem alterar o resto do código. Já a classe Repository encapsula a lógica dos dados. Ela facilida a manutenção e escalonamento do código, porque a lógica dos dados está centrada em um local apenas.
-- SwaggerUI: É uma ferramenta que permite visualizar e interagir com APIs Restful, fornecendo toda uma interface gráfica e interativa; facilita a visualização da documentação e possibilita o envio de solicitações HTTP
+- DTO (Data Transfer Object):  É um padrão de design usado para transferir dados entre subsistemas de um aplicativo. As vantagens dele incluem a redução do tráfego de rede, encapsulamento e desacoplamento dos dados e flexibilidade de desenvolvimetno;
+- Repository Pattern: É um padrão de arquitetura de software. A interface IRepository permite uma flexibilidade de implementação de novos métodos, sem alterar o resto do código. Já a classe Repository encapsula a lógica dos dados. Ela facilida a manutenção e escalonamento do código, porque a lógica dos dados está centrada em um local apenas;
+- SwaggerUI: É uma ferramenta que permite visualizar e interagir com APIs Restful, fornecendo toda uma interface gráfica e interativa; facilita a visualização da documentação e possibilita o envio de solicitações HTTP;
