@@ -24,6 +24,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 - Entre no diretório ToDoListKeevo_api e dê o seguinte comando `dotnet restore`;
   - Isso irá atualizar todos os pacotes do NuGet em sua máquina.
 - Dê o comando `docker-compose up`;
+  - Ele irá fazer o download da imagem do Postgres e criar o container responsável por armazenar o banco de dados.
 - Volte um diretório e entre na pasta ToDoListKeevo-ng e dê o seguinte comando `npm install`;
   - Isso irá baixar todos os pacotes e dependências necessários para rodar o app Angular.
 
