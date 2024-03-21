@@ -56,20 +56,24 @@ Pronto, agora ambos os sistemas backend e frontend devem estar devidamente confi
 
 # Estrutura do projeto
 
-- `./ToDoListKeevo_api`: É o diretório que armazena todo o script da API .Net
-- `./ToDoListKeevo_api/Dto`: É uma das melhorias que resolvi implementar, responsável pelo desacoplamento e encapsulamento dos dados
-- `./ToDoListKeevo_api/Data`: Aqui temos a implementação do padrão de projeto Repository Pattern
-- `./ToDoListKeevo_api/Helpers`: Esta pasta é responsável principalmente pela paginação da API durante as fases de teste
+- `./ToDoListKeevo_api/Models/Tarefa.cs`: Essa é minha classe de abstração, responsável por representar as tarefas que serão gerenciadas pelo sistema de lista de tarefas.
+- `./ToDoListKeevo_api`: É o diretório que armazena todo o script da API .Net;
+- `./ToDoListKeevo_api/Dto`: É uma das melhorias que resolvi implementar, responsável pelo desacoplamento e encapsulamento dos dados;
+- `./ToDoListKeevo_api/Data`: Aqui temos a implementação do padrão de projeto Repository Pattern;
+- `./ToDoListKeevo_api/Helpers`: Esta pasta é responsável principalmente pela paginação da API durante as fases de teste;
+- `./ToDoListKeevo_api/docker-compose.yaml`: Este arquivo define um serviço Docker que executa um contêiner PostgreSQL com configurações específicas de usuário, senha e mapeamento de porta;
+- `./ToDoListKeevo_api/Startup.cs`: O Startup.cs é uma parte crucial dessa aplicação, pois é onde a aplicação é inicializada e configurada. Ele define como os diferentes componentes da aplicação se comunicam e interagem entre si.
+- `./ToDoListKeevo_api/Program.cs`: A classe Program.cs é o o ponto de entrada responsável pela inicialização e configuração do host da aplicação.
 
-- `./ToDoListKeevo-ng`: É o diretório que armazena todo o script do client Angular
-- `./ToDoListKeevo-ng/src`: É um dos principais diretorios do Angular, onde contém os códigos-fonte da aplicação
-- `./ToDoListKeevo-ng/src/app/components`: Este diretório é usado para armazenar os componentes da sua aplicação
-- `./ToDoListKeevo-ng/src/app/services`: Aqui, é definido os serviços que fornecem funcionalidades compartilhadas em toda a aplicação
-- `./ToDoListKeevo-ng/src/app/models`: Este diretório contém os modelos ou interfaces que definem a estrutura dos dados usados na aplicação
-- `./ToDoListKeevo-ng/src/app/app.module.ts`: Esse é um componente crucial. Ele define o módulo raiz da aplicação no Angular e é responsável por importar e configurar todos os outros módulos, componentes, serviços e recursos necessários para o funcionamento da aplicação
-- `./ToDoListKeevo-ng/src/main.ts`: Este é o arquivo principal onde o Angular é inicializado. Ele importa o módulo raiz (AppModule) e inicializa a aplicação usando a função
+- `./ToDoListKeevo-ng`: É o diretório que armazena todo o script do client Angular;
+- `./ToDoListKeevo-ng/src`: É um dos principais diretorios do Angular, onde contém os códigos-fonte da aplicação;
+- `./ToDoListKeevo-ng/src/app/components`: Este diretório é usado para armazenar os componentes da sua aplicação;
+- `./ToDoListKeevo-ng/src/app/services`: Aqui, é definido os serviços que fornecem funcionalidades compartilhadas em toda a aplicação;
+- `./ToDoListKeevo-ng/src/app/models`: Este diretório contém os modelos ou interfaces que definem a estrutura dos dados usados na aplicação;
+- `./ToDoListKeevo-ng/src/app/app.module.ts`: Esse é um componente crucial. Ele define o módulo raiz da aplicação no Angular e é responsável por importar e configurar todos os outros módulos, componentes, serviços e recursos necessários para o funcionamento da aplicação;
+- `./ToDoListKeevo-ng/src/main.ts`: Este é o arquivo principal onde o Angular é inicializado. Ele importa o módulo raiz (AppModule) e inicializa a aplicação usando a função.
 
-- Padrão MVC: O padrão MVC foi empregue no desenvolvimento da Api.
+- Padrão MVC: O padrão MVC foi empregue no desenvolvimento de todo o programa. Responsável por separar a aplicação em três componentes: o Model (modelo) para os dados, a View (visualização) para a interface do usuário e o Controller (controlador) para gerenciar as interações entre o modelo e a visualização.
 
 
 # Melhorias implementadas
