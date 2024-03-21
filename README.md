@@ -35,7 +35,7 @@ Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando
 - `POSTGRES_USER`;
 - `POSTGRES_PASSWORD`.
 
-- Entre no diretório ToDoListKeevo_api > appsettings.json e appsettings.Development.json;
+Entre no diretório `ToDoListKeevo_api/appsettings.json` e `appsettings.Development.json`;
 - Em ambos os arquivos JSON, você encontrará uma chave nomeada `PostgreConnection`, altere os campos em ambos JSON:
   - Host, port, database, username e password;
   - Todas essas configurações variam de máquina e de acordo com sua configuração do Postgre.
