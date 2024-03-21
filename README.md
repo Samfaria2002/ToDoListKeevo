@@ -37,8 +37,9 @@ Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando
 
 Entre no diretório `ToDoListKeevo_api/appsettings.json` e `appsettings.Development.json`. Em ambos os arquivos JSON, você encontrará uma chave nomeada de `PostgreConnection`, altere os campos em ambos JSON de acordo com a configuração feita no `docker-compose.yaml`.
 Para realizar a conexão do banco de dados PostgreSQL com o container do Docker, recomendo a utilização de alguma interface para administração de banco de dados. Caso sua ide seja o Visual Studio Code, recomendo a extensão Database Client `https://database-client.com/#/home`.
-Para configurar, estabeleça uma nova conexão passando nos campos os mesmos parâmetros que definimos no `docker-compose.yaml` e na chave `PostgreConnection`.
-Volte para o terninal e entre no diretório `ToDoListKeevo_api`. Apague a pasta Migrations e insira os seguintes comandos no terminal respectivamente: `dotnet ef migrations add init` e `dotnet ef database update`. Esses comandos irão recriar o modelo do banco de dados e atualizar-los na nova conexão.
+Agora, é necessário ligar o container para podermos dar prosseguimento a configuração do banco. Abra o terminal e insira o comando `docker container start postgres-container`.
+
+Para configurar, estabeleça uma nova conexão passando nos campos os mesmos parâmetros que definimos no `docker-compose.yaml` e na chave `PostgreConnection`. Volte para o terninal e entre no diretório `ToDoListKeevo_api`. Apague a pasta Migrations e insira os seguintes comandos no terminal respectivamente: `dotnet ef migrations add init` e `dotnet ef database update`. Esses comandos irão recriar o modelo do banco de dados e atualizar-los na nova conexão.
 
 ### Inicialização do programa
 
