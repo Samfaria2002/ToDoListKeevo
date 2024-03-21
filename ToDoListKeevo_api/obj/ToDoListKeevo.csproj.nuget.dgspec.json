@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {}
+    "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {}
   },
   "projects": {
-    "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {
+    "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
+        "projectUniqueName": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
         "projectName": "ToDoListKeevo",
-        "projectPath": "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
+        "projectPath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
         "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "D:\\Projetos Programação\\ToDoListKeevo\\ToDoListKeevo_api\\obj\\",
+        "outputPath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
