@@ -30,7 +30,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 
 ### Configuração do Docker e PostgreSQL
 
-Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando docker-compose up, o Docker irá baixar a imagem do Postgres e criar um container onde será hospedado o banco de dados. Para definir corretamente o banco, abra o arquivo `ToDoListKeevo_api/docker-compose.yaml` e preencha os campos de acordo com a configuração do seu Docker Desktop: 
+Nessa parte, será necessário fazer uma nova configuração. Ao rodar o comando `docker-compose up`, o Docker irá baixar a imagem do Postgres e criar um container onde será hospedado o banco de dados. Para definir corretamente o banco, abra o arquivo `ToDoListKeevo_api/docker-compose.yaml` e preencha os campos de acordo com a configuração do seu Docker Desktop: 
 - `hostname`;
 - `POSTGRES_USER`;
 - `POSTGRES_PASSWORD`.
@@ -48,8 +48,8 @@ Seguindo, volte para o terninal e entre no diretório `ToDoListKeevo_api`, em se
 
 Caso queira acessar a documentação das rotas HTTP via Swagger, acesse `http://localhost:{porta_da_api}/swagger/index.html`.
 
-Será necessário trocar a porta da Api nos arquivos do Angular, pois variam de serviço. Ao rodar o script dotnet pelo `Dotnet watch run`, observe o terminal 
-pois ele retornará uma porta disponível que foi configurada dinâmicamente e hopspedará a api dotnet. Vá para o diretório `ToDoListKeevo-ng/src/environment/environment.prod.ts` e troque, na url da api, a porta pela a que foi gerada dinâmicamente, retornada no terminal: `mainUrlAPI: 'http://localhost:{porta_da_api}/api/tarefa'`.
+Será necessário trocar a porta da Api nos arquivos do Angular, pois variam de serviço. Ao rodar o script dotnet pelo `dotnet watch run`, observe o terminal 
+pois ele retornará mensagem indicando uma porta disponível que foi configurada dinâmicamente e hopspedará a api dotnet. Vá para o diretório `ToDoListKeevo-ng/src/environment/environment.prod.ts` e troque, na url da api, a porta pela a que foi gerada dinâmicamente, retornada no terminal: `mainUrlAPI: 'http://localhost:{porta_da_api}/api/tarefa'`.
 
 Pronto, agora ambos os sistemas backend e frontend devem estar devidamente configurados e prontos para serem usados.
 
