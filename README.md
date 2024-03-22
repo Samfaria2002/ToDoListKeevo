@@ -20,7 +20,7 @@ Não possuia vasta experiência com estas tecnologias, então foi um super desaf
 ### Como rodar em outro computador?
 
 - Primeiro clone o projeto `https://github.com/Samfaria2002/ToDoListKeevo.git`;
-- Abra o projeto em uma ide de preferência e inicie um terminal;
+- Abra o projeto em uma ide de sua preferência e inicie um terminal;
 - Entre no diretório ToDoListKeevo_api e dê o seguinte comando `dotnet restore`;
   - Isso irá atualizar todos os pacotes do NuGet em sua máquina.
 - Dê o comando `docker-compose up`;
