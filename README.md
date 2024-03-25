@@ -56,7 +56,7 @@ Pronto, agora ambos os sistemas backend e frontend devem estar devidamente confi
 
 # Estrutura do projeto
 
-- `./ToDoListKeevo_api/Models/Tarefa.cs`: Essa é minha classe de abstração, responsável por representar as tarefas que serão gerenciadas pelo sistema de lista de tarefas.
+- `./ToDoListKeevo_api/Models/Tarefa.cs`: Essa é minha classe de abstração, responsável por representar as tarefas que serão gerenciadas pelo sistema de lista de tarefas. Os atributos foram definidos como id, nome, status ("EmAndamento", "Pendente" ou "Concluida"), tipo ("Estudo", "Trabalho", "Lazer", "Compras" ou "Pessoal"), prioridade ("Alta, "Media" ou "Baixa") e prazo;
 - `./ToDoListKeevo_api`: É o diretório que armazena todo o script da API .Net;
 - `./ToDoListKeevo_api/Dto`: É uma das melhorias que resolvi implementar, responsável pelo desacoplamento e encapsulamento dos dados;
 - `./ToDoListKeevo_api/Data`: Aqui temos a implementação do padrão de projeto Repository Pattern;
