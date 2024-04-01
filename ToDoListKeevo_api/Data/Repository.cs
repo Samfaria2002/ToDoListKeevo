@@ -36,11 +36,31 @@ namespace ToDoListKeevo_api.Data
             return(_context.SaveChanges() > 0);
         }
 
+        public void ReorderId() {
+            var tarefas = GetAllTarefas().ToList();
+            if (tarefas.Count > 0) {
+                _context.Tarefas.RemoveRange(tarefas);
+                SaveChanges();
+                for (int i = 0; i < tarefas.Count; i++) {
+                    tarefas[i].Id = i + 1;
+                }
+                _context.Tarefas.AddRange(tarefas);
+                SaveChanges();
+            }
+        }
         public async Task<PageList<Tarefa>> GetAllTarefasAsync(PageParams pageParam) {
+            IQueryable<Tarefa> query = _context.Tarefas;
+            ReorderId();
+            query = query.AsNoTracking().OrderBy(q => q.Id);
+            return await PageList<Tarefa>.CreateAsync(query, pageParam.PageNumber, pageParam.PageSize);
+        }
+
+        public Tarefa[] GetAllTarefas() {
             IQueryable<Tarefa> query = _context.Tarefas;
 
             query = query.AsNoTracking().OrderBy(q => q.Id);
-            return await PageList<Tarefa>.CreateAsync(query, pageParam.PageNumber, pageParam.PageSize);
+
+            return query.ToArray();
         }
 
         public Tarefa[] GetAllTarefasById(int id) {

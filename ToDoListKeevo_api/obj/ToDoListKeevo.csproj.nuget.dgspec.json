@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {}
+    "C:\\Projeto\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {}
   },
   "projects": {
-    "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {
+    "C:\\Projeto\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
+        "projectUniqueName": "C:\\Projeto\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
         "projectName": "ToDoListKeevo",
-        "projectPath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "D:\\projetos\\ToDoListKeevo\\ToDoListKeevo_api\\obj\\",
+        "projectPath": "C:\\Projeto\\ToDoListKeevo\\ToDoListKeevo_api\\ToDoListKeevo.csproj",
+        "packagesPath": "C:\\Users\\aguin\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto\\ToDoListKeevo\\ToDoListKeevo_api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\aguin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

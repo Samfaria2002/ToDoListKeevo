@@ -6,7 +6,7 @@ services:
     container_name: postgres-container
     image: postgres
     environment:
-      hostname: ""
+      hostname: "localhost"
       POSTGRES_USER: ""
       POSTGRES_PASSWORD: ""
       POSTGRES_DB: "postgres"

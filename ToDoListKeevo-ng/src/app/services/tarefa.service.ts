@@ -43,6 +43,6 @@ export class TarefaService {
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseURL}/${id}`);
-  }  
+  }
   
 }

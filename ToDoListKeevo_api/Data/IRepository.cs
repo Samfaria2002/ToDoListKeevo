@@ -18,9 +18,13 @@ namespace ToDoListKeevo_api.Data
         void Delete<T>(T entity) where T : class {}
 
         bool SaveChanges();
+
+        void ReorderId();
         
         
         Task<PageList<Tarefa>> GetAllTarefasAsync(PageParams pageParam);
+
+        Tarefa[] GetAllTarefas();
 
         Tarefa[] GetAllTarefasById(int id);
 

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { Tarefa } from '../../models/Tarefa'; // Replace 'path/to/tarefa.model' with the actual path to the Tarefa model file
+import { Tarefa } from '../../models/Tarefa';
 import { TarefaService } from '../../services/tarefa.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -37,6 +37,10 @@ export class TarefasComponent implements OnInit, OnDestroy {
   statusList: string[] = ['Pendente', 'Concluida', 'EmAndamento'];
   selectedStatus: string = '';
   modalAberto = false;
+  statusOptions = ['Pendente', 'Concluida', 'EmAndamento'];
+  tipoOptions = ['Estudo', 'Trabalho', 'Lazer', 'Compras', 'Pessoal'];
+  prioridadeOptions: string[] = ['Baixa', 'Media', 'Alta'];
+  selecionadoPrioridade: string = '';
 
   constructor(
     private tarefaService: TarefaService,
@@ -167,10 +171,10 @@ export class TarefasComponent implements OnInit, OnDestroy {
       .subscribe(
         () => {
           this.carregarTarefas();
-          this.toastr.success('Aluno salvo com sucesso!');
+          this.toastr.success('Tarefa salva com sucesso!');
         },
         (error: any) => {
-          this.toastr.error(`Erro: Aluno não pode ser salvo!`);
+          this.toastr.error(`Erro: Tarefa não pode ser salva!`);
           console.error(error);
           this.spinner.hide();
         },

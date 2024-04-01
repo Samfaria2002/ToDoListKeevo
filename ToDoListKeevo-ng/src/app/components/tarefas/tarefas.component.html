@@ -18,11 +18,15 @@
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Status</label>
-          <input type="text" formControlName="status"  class="form-control">
+          <select formControlName="status" class="form-control" id="status">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Tipo</label>
-          <input type="text" formControlName="tipo" class="form-control">
+          <select formControlName="tipo" class="form-control" id="tipo">
+            <option *ngFor="let tipo of tipoOptions" [value]="tipo">{{ tipo }}</option>
+          </select>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Prazo</label>
@@ -30,7 +34,9 @@
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Prioridade</label>
-            <input type="text" formControlName="prioridade" class="form-control">
+            <select formControlName="prioridade" class="form-control" id="prioridade">
+              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+            </select>
         </div>
         <div class="form-group">
           <hr>
@@ -57,11 +63,15 @@
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Status</label>
-          <input type="text" formControlName="status"  class="form-control">
+          <select formControlName="status" class="form-control" id="status">
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Tipo</label>
-          <input type="text" formControlName="tipo" class="form-control">
+          <select formControlName="tipo" class="form-control" id="tipo">
+            <option *ngFor="let tipo of tipoOptions" [value]="tipo">{{ tipo }}</option>
+          </select>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Prazo</label>
@@ -69,7 +79,9 @@
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Prioridade</label>
-            <input type="text" formControlName="prioridade" class="form-control">
+            <select formControlName="prioridade" class="form-control" id="prioridade">
+              <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">{{ prioridade }}</option>
+            </select>
         </div>
         <div class="form-group">
           <hr>

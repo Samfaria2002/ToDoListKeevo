@@ -3,6 +3,9 @@
 Olá! Me chamo Samuel Faria Garcia e este é o repositório contendo meu programa, de acordo com o desafio proposto para a última estapa do processo seletivo de estágio da Keevo https://github.com/keevosoftwares/desafio-fullstack .
 Não possuia vasta experiência com estas tecnologias, então foi um super desafio aprendê-las e desenvolver um programa em 13 dias. Adorei todo o processo de estudo e desenvolvimento; expandi meus conhecimentos acerca da minha área de atuação, que é o desenvolvimento full-stack. Pude aprimorar ainda mais meus conhecimentos na área.
 
+- Apresentação no [Canva](https://www.canva.com/design/DAGA1CBH5mE/YkuAiAZ1V0LYHq_nZpZjeA/view?utm_content=DAGA1CBH5mE&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+- Protótipo no [Figma](https://www.figma.com/file/7ZvYWlwpau0wYhkPELNcsq/ToDo-List?type=design&node-id=0%3A1&mode=design&t=AbHijiaUt1LcxUfm-1)
+
 # Configuração
 
 ## Requisitos para rodar o projeto
